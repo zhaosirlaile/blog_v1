@@ -4,8 +4,8 @@ module.exports = function(sql,params,callback) {
     let connection = mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password:'15828182346',
-        database: 'blog',
+        password:'**********', // your database password
+        database: 'blog',       // your database 
         port:'3306'
     })
     connection.connect(function(err){
