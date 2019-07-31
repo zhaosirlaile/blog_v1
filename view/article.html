@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="shortcut icon" href="/public/img/favicon.ico" type="image/x-icon">
+    <title>赵sir的个人网站-文章</title>
+    <meta name="description" content="赵sir的个人网站 - Zhao Sir's Personal Website 记录我的IT成长路上的点点滴滴，希望通过撰写博客对知识沉淀，同时方便平时复习巩固。">
+	<meta name='Keywords' content="赵sir,个人网站，个人博客，IT，大前端，全栈">
+    <link rel="stylesheet" href="/public/css/art.css">
+	<link rel="stylesheet" href="/public/css/main.css">
+	<link rel="stylesheet" href="/public/css/base.css">
+    <link rel="stylesheet" href="/public/css/iconfont.css">
+    <link rel="stylesheet" href="/public/css/github.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+			<a href="/index" title="返回首页">
+				<img src="/public/img/logo.jpg" alt="logo" title="返回首页">
+			</a>
+        </div>
+        <div class="nav">
+			<div class="nav-left">
+				<a href="/index" title="index"><span class="iconfont icon-shouye"></span>首页</a>
+				<a href="/blog" title="blog"><span class="iconfont icon-wenzhang"></span>博文</a>
+				<a href="/works" title="works"><span class="iconfont icon-zuopin"></span>作品</a>
+				<a href="/regarding" title="regarding"><span class="iconfont icon-about"></span>关于</a>
+				<a href="/login" title="login-in"><span class="iconfont icon-denglu-copy"></span>登录</a>
+			</div>
+			<div class="nav-right">
+			</div>
+        </div>
+        <div class="search">
+			<input type="text" name="search" title="搜索" id="search">
+			<span class="iconfont icon-sousuo xian"></span>
+        </div>
+        <div class='catalog'>
+        </div>
+    </header>
+    <section class="w">
+
+    </section>
+    <footer>
+        <p>&copy; 2019 zhaosirlaile</p>
+        <p>蜀ICP备19012587号</p>
+    </footer>
+    <div class="menu">
+        <span class="iconfont icon-caidan"></span>
+    </div>
+
+    <script src="/public/js/main.js"></script>
+    <script type="text/javascript" src="/public/js/marked.min.js" defer></script>
+    <script type="text/javascript" src="/public/js/highlight.pack.js" defer></script>
+    <script>
+        window.onload = function () {
+            let ajaxGet = new XMLHttpRequest();
+            let sectionDOM = document.querySelector('section');
+            let sectionList ;
+            let url = '#mySrcLink#'
+            ajaxGet.open('GET',url);
+            ajaxGet.send();
+            marked.setOptions({
+                renderer: new marked.Renderer(),
+                gfm: true,
+                tables: true,
+                escaped : true,
+                breaks: false,
+                pedantic: false,
+                sanitize: false,
+                smartLists: true,
+                smartypants: false,
+                highlight: function (code, lang) {
+                    return hljs.highlightAuto(code).value;
+                }
+            });
+            ajaxGet.onreadystatechange= function(){
+                if (ajaxGet.readyState === 4 && ajaxGet.status === 200) {
+                    sectionList = marked(ajaxGet.responseText);
+                    sectionDOM.innerHTML = sectionList;
+                    getTitle()
+                }
+            }
+        }
+        function getTitle () {
+            let catalog = document.querySelector('.catalog');
+            let arr = [];
+            h2DOm = document.querySelectorAll('h2');
+            h2Title = h2DOm.innerHTML;
+            for(let i = 0 ; i < h2DOm.length; i++) {
+                h2DOm[i].style = 'padding-top: 11.5vh;margin-top: -11vh;'
+                let aDOM = document.createElement('a');
+                aDOM.href = `#${h2DOm[i].id}`;
+                aDOM.innerText = `${ i+1 }. ${h2DOm[i].innerText}`;
+                catalog.appendChild(aDOM);
+            }
+            if (h2DOm.length > 14) {
+                catalog.style.height = '400px';
+            }
+        }
+    </script>
+</body>
+</html>

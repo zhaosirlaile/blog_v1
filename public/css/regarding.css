@@ -1,0 +1,35 @@
+section {
+    margin: 11vh auto 11vh !important;
+    padding: 0 5vh;
+}
+section>div {
+    padding-top: 3rem;
+}
+section h2 {
+    margin: 1rem 0;
+}
+section p {
+    margin: .5rem 0;
+    padding-left: 1rem;
+}
+section a {
+    margin: 0 .25rem;
+    color: rgb(67, 179, 142);
+    text-decoration: underline rgba(0, 0, 0, 0.1);
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+section a:hover {
+    text-decoration: underline rgba(0, 0, 0, 0.5);
+}
+section .contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+section .contact p {
+
+}

@@ -1,0 +1,266 @@
+@charset "utf-8";
+section {
+  color: #333;
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-rendering: optimizelegibility;
+
+}
+body .catalog {
+  position: absolute;
+  right: 2rem;
+  top: 8rem;
+  width: 10rem;
+  background-color: #e0dbdb; 
+  overflow-x: hidden;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+body .catalog a {
+  width: 10rem;
+  display: block;
+  overflow: hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+  color: #999;
+  padding-left: .5rem;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+}
+body .catalog a:hover {
+  color: #fff;
+}
+body section.w {
+  padding: 11vh .5rem;
+}
+section table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+section fieldset,
+section img {
+  border: 0;
+}
+section blockquote {
+  position: relative;
+  color: #999;
+  font-weight: 400;
+  border-left: 1px solid #1abc9c;
+  padding-left: 1em;
+  margin: 1em 3em 1em 2em;
+}
+@media only screen and ( max-width: 640px ) {
+  section blockquote {
+    margin: 1em 0;
+  }
+}
+section acronym,
+section abbr {
+  border-bottom: 1px dotted;
+  font-variant: normal;
+}
+section abbr {
+  cursor: help;
+}
+section del {
+  text-decoration: line-through;
+}
+section address,section caption,section cite,section code,section dfn,section em,section th,section var {
+  font-style: normal;
+  font-family: "Comic Sans MS", Monaco, Courier, "Courier New", monospace;
+  font-size: 15px;
+}
+section caption,
+section th {
+  text-align: left;
+}
+section sub,
+section sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+}
+section :root sub,section :root sup {
+  vertical-align: baseline; /* for ie9 and other modern browsers */
+}
+section sup {
+  top: -0.5em;
+}
+section sub {
+  bottom: -0.25em;
+}
+section a {
+  color: #1abc9c;
+  border-bottom: 1px solid #1abc9c;
+}
+section a:hover {
+  border-bottom-color: #555;
+  color: #555;
+  text-decoration: none;
+}
+section pre,
+section code,
+section pre  {
+  font-family: "Comic Sans MS", Monaco, Courier, "Courier New", monospace;
+}
+
+section pre {
+  background: #f3f5f0;
+  border: 1px solid #ddd;
+  padding: 1em 1.5em;
+  display: block;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+section hr {
+  border: none;
+  border-bottom: 1px solid #cfcfcf;
+  margin-bottom: 0.8em;
+  height: 10px;
+}
+section small,
+section figcaption {
+  font-size: 0.9em;
+  color: #888;
+}
+
+section strong,
+section b {
+  font-weight: bold;
+  color: #000;
+}
+section ,
+section td,
+section  th {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+section table {
+  table-layout: fixed;
+}
+section  {
+  font-family: Palatino, Optima, Georgia, serif;
+}
+section  p, section  pre,section  ul,section  ol,section  dl,section  form,section  hr,section  table,section blockquote {
+  margin-bottom: 1.2em;
+}
+section p {  
+  text-indent: 2em;
+}
+section code {
+ color: #c7254e;
+ font-size: .92857em;
+ background-color: #f3f3f3;
+}
+section  pre code{
+  color: #333;
+}
+section h1,section h2,section h3,section h4,section h5,section h6 {
+  font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+  font-weight: 100;
+  color: #000;
+  line-height: 1.35;
+}
+section h1,section h2,section h3,section h4,section h5,section h6{
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+  line-height: 1.35;
+  font-weight: bolder;
+  padding:0;
+}
+
+section h1{
+  font-size: 2em;
+  font-weight: bold;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+section  h2{
+  font-size: 1.8em;
+}
+
+section h3 {
+  font-size: 1.6em;
+}
+
+section h4 {
+  font-size: 1.4em;
+}
+
+section h5, section h6 {
+  font-size: 1.2em;
+}
+section ul {
+  margin-left: 1.3em;
+  list-style: disc;
+}
+
+section  ol{
+  list-style: decimal;
+  margin-left: 1.9rem;
+}
+section  li ul,section li ol{
+  margin-bottom: 0.8em;
+  margin-left: 2em;
+}
+section li ul,section  ul {
+  list-style: circle;
+}
+section  table th,section  table td,section table caption {
+  border: 1px solid #ddd;
+  padding: 0.5em 1em;
+  color: #666;
+}
+
+section  table th,section table th {
+  background: #fbfbfb;
+}
+
+section .typo table thead th,section .typo-table thead th {
+  background: #f1f1f1;
+}
+
+section  table caption {
+  border-bottom: none;
+}
+section .typo-input,section .typo-textarea {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+section  em,section legend,section caption {
+  color: #000;
+  font-weight: inherit;
+}
+section em {
+  position: relative;
+}
+section em {
+  position: absolute;
+  top: 0.65em;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 0;
+  content: "・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・";
+}
+section img {
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: -2rem;
+}
+@media only screen and ( max-width: 1024px ) {
+  body .catalog {
+    display: none;
+  }
+}
+

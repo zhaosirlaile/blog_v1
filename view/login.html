@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="shortcut icon" href="/public/img/favicon.ico" type="image/x-icon">
+    <title>赵sir的个人网站-登录</title>
+    <meta name="description" content="赵sir的个人网站 - Zhao Sir's Personal Website 记录我的IT成长路上的点点滴滴，希望通过撰写博客对知识沉淀，同时方便平时复习巩固。">
+	<meta name='Keywords' content="赵sir,个人网站，个人博客，IT，大前端，全栈">
+	<link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/login.css">
+    <link rel="stylesheet" href="/public/css/base.css">
+	<link rel="stylesheet" href="/public/css/iconfont.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+			<a href="/index" title="返回首页">
+				<img src="/public/img/logo.jpg" alt="logo" title="返回首页">
+			</a>
+        </div>
+        <div class="nav">
+			<div class="nav-left">
+				<a href="/index" title="index"><span class="iconfont icon-shouye"></span>首页</a>
+				<a href="/blog" title="blog"><span class="iconfont icon-wenzhang"></span>博文</a>
+				<a href="/works" title="works"><span class="iconfont icon-zuopin"></span>作品</a>
+				<a href="/regarding" title="regarding"><span class="iconfont icon-about"></span>关于</a>
+				<a href="/login" title="login-in"><span class="iconfont icon-denglu-copy"></span>登录</a>
+			</div>
+			<div class="nav-right">
+			</div>
+        </div>
+        <div class="search">
+			<input type="text" name="search" title="搜索" id="search">
+			<span class="iconfont icon-sousuo xian"></span>
+        </div>
+    </header>
+    <div class="login">
+        <div class="header">
+            <p id="login" class="focus" title="登录">登录</p>
+            <p id="register" title="注册">注册</p>
+        </div>
+        <div class="main">
+            <form action="" class="login-in" method="POST">
+                <div>
+                    <div class="account">
+                        <input type="text" name="account" placeholder="请输入账号" >
+                    </div>
+                    <div class="password">
+                        <input type="password" maxlength="6" name="password" placeholder="请输入密码" >
+                    </div>
+                </div>
+                <input type="submit" class="loginbtn" value="登录">
+            </form>
+            <form action="" class='register' method="POST">
+                <div>
+                    <div class="e-mail">
+                        <input type="text" name="e-mail" placeholder="请输入邮箱">
+                    </div>
+                    <div class="onepassword">
+                        <input type="password" name="onepassword" maxlength="6" placeholder="请输入密码">
+                    </div>
+                    <div class="get-captcha">
+                        <input type="text" name="captcha" maxlength="6" placeholder="请输入验证码">
+                        <input type="button" class="getcaptcha" style="background: #999" value="发送验证码"></input>
+                    </div>
+                </div>
+                <input type="submit" id='submitreg' value="注册">
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2019 zhaosirlaile</p>
+        <p>蜀ICP备19012587号</p>
+    </footer>
+    <div class="menu">
+        <span class="iconfont icon-caidan"></span>
+    </div>
+    <script src="/public/js/main.js"></script>
+    <script>
+        let myNumbetr ;
+        let main = document.querySelector('.main');
+        let loginbut = document.querySelector('#login');
+        let registerbut = document.querySelector('#register');
+        let loginIn = document.querySelector('.login-in');
+        let register = document.querySelector('.register');
+        loginbut.onclick = function() {
+            loginIn.style.display = 'flex';
+            register.style.display = 'none';
+            loginIn.classList.add('move-in');
+            loginbut.classList.add('focus');
+            registerbut.classList.remove('focus');
+        }
+        registerbut.onclick = function(){
+            loginIn.style.display = 'none';
+            register.style.display = 'flex';
+            register.classList.add('move-in');
+            registerbut.classList.add('focus');
+            loginbut.classList.remove('focus');
+        }
+        // 登录注册
+        {
+            let submitreg = document.querySelector('#submitreg');
+            let eMail = document.querySelector('.e-mail').children[0];
+            let onepassword = document.querySelector('.onepassword').children[0];
+            let captchatext = document.querySelector('.get-captcha').children[0];
+            let captchabtn = document.querySelector('.getcaptcha');
+            let loginbtn = document.querySelector('.loginbtn');
+            captchabtn.setAttribute('disabled','true');
+            let statusEmail = false;
+            let statusPassword = false;
+            let captchabtnStatus = -1;
+            function isDisabledbtn (){
+                if (statusEmail === true && statusPassword === true && captchabtnStatus === -1) {
+                    captchabtn.removeAttribute('disabled');
+                    captchabtn.style.background = '#2778D0';
+                    captchabtnStatus = 1;
+                }
+            }
+            eMail.onchange = function() {
+                let reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+                if (reg.test(this.value)) {
+                    statusEmail = true;
+                    isDisabledbtn();
+                } else {
+                    statusEmail = false;
+                    isDisabledbtn();
+                }
+            }
+            onepassword.onchange = function () {
+                let reg = /^[a-zA-Z0-9]{6,6}$/;
+                if (reg.test(this.value)) {
+                    statusPassword = true;
+                    isDisabledbtn();
+                } else {
+                    statusPassword = false;
+                    isDisabledbtn();
+                }
+            }
+            // 开启定时器
+            function turnSetInterval (){
+                let time = 60;
+                captchabtn.value = `${time}秒后再试`;
+                let myTime = setInterval(function(){
+                    time --;
+                    captchabtn.value = `${time}秒后再试`;
+                    if (time === 0) {
+                        clearInterval(myTime);
+                        captchabtn.value = '发送验证码',
+                        captchabtn.removeAttribute('disabled');
+                        myNumbetr = 0;
+                        captchabtn.style.background = '#2778D0'
+                    } 
+                },1000)
+            }
+            // 开启定时器
+
+            captchabtn.onclick = function (e) {
+                if (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                } else {
+                    window.event.returnValue = false;
+                    window.event.cancelBubble = true;
+                }
+                let xml = new XMLHttpRequest();
+                xml.open('GET','/login/getCaptcha?' + 'email=' + eMail.value);
+                xml.send(null);
+                xml.onreadystatechange= function(){
+                    if (xml.readyState === 4 && xml.status === 200) {
+                        let data = JSON.parse(xml.responseText);
+                        if (data.status === 1) {
+                            myNumbetr = data.captchaNumber;
+                            turnSetInterval();
+                        }
+                    }
+                }
+                captchabtn.setAttribute('disabled','true');
+                captchabtn.style.background = '#999';
+            }
+
+            submitreg.onclick = function() {
+                if (statusEmail === true && statusPassword === true && captchatext.value === myNumbetr.toString() ){
+                    let xml = new XMLHttpRequest();
+                    xml.open('POST','/login/register');
+                    xml.send(`e-mail=${eMail.value}&onepassword=${onepassword.value}`);
+                    xml.onreadystatechange= function(){
+                    if (xml.readyState === 4 && xml.status === 200) {
+                        let data = JSON.parse(xml.responseText);
+                        if (data.status === -1) {
+                            alert('已经有了该用户，该邮箱地址不可用');
+                        } else if (data.status === 1) {
+                            alert('注册成功');
+                        }
+                        console.log(data);
+                    }
+                }
+                } else {
+                    alert('验证码有误');
+                }
+                return false;
+            }
+            let account = document.querySelector('.account').children[0];
+            let password = document.querySelector('.password').children[0];
+            let loginStatusEmail,loginStatusPassword;
+            account.onchange = function () {
+                let regEmail = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+                if (regEmail.test(this.value)) {
+                    LoginstatusEmail = true;
+                } else {
+                    LoginstatusEmail = false;
+                }
+                console.log(LoginstatusEmail);
+            }
+            password.onchange = function (){
+                let regPassword = /^[a-zA-Z0-9]{6,6}$/;
+                if (regPassword.test(this.value)) {
+                    loginStatusPassword = true;
+                } else {
+                    loginStatusPassword = false;
+                }
+                console.log(loginStatusPassword);
+            }
+            loginbtn.onclick = function () {
+                if (loginStatusPassword === true && LoginstatusEmail === true ){
+                    let xml = new XMLHttpRequest();
+                    xml.open('POST','/login/enter');
+                    xml.send(`e-mail=${account.value}&onepassword=${password.value}`);
+                    xml.onreadystatechange= function(){
+                        if (xml.readyState === 4 && xml.status === 200) {
+                            let data = JSON.parse(xml.responseText);
+                            if (data.status === 1) {
+                                alert('登录成功');
+                                location.href = '/';
+                            } else  {
+                                alert('密码错误')
+                            }
+                        }
+                    }
+                } else {
+                    alert('账号、密码错误');
+                }
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
